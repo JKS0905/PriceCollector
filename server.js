@@ -6,6 +6,8 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
 import { chromium } from 'playwright';
+import { fetchPriceAndAssignMethod } from "./fetchPrices.js";
+
 
 const server = express();
 
@@ -22,7 +24,9 @@ const SERVER_PORT = process.env.SERVER_PORT;
 //});
 
 const spanPowerNo = "span[_ngcontent-ng-c3913698638]"
-const link1 = "https://www.obsbygg.no/sikkerhet/verneutstyr-og-arbeidsklar/2501353?v=ObsBygg-5708614328026"
+const link1 = "https://buddy.no/butikk/katt/kattesand/total-cover-kattesand/"
+
+fetchPriceAndAssignMethod(link1);
 
 async function fetchPrice(link) {
   try {
@@ -125,7 +129,8 @@ async function getSpanValue(link, span) {
   }
 }
 
-const a = await fetchPrice(link1);
+//const a = await fetchPrice(link1);
+//console.log(a)
 
 
 // Middleware to serve static files (HTML)
